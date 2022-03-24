@@ -1,5 +1,5 @@
     this.service.getHistory(128, 20210118, 20210125).subscribe(data => {
-      const data1 = [Array(data.sdhInternal?.length), Array(data.sdhInternal?.length), Array(data.sdhInternal?.length)];
+      const data1 = [Array(data.length), Array(data.length), Array(data.length)];
       let inx = 0;
       data.forEach(plot => {
         data1[0][inx] = plot.sensingDt ;
