@@ -1,0 +1,18 @@
+    this.sensorService.getHistoryData(128, 20210118, 20210125).subscribe(data => {
+      const data1 = [Array(data.sdhInternal?.length), Array(data.sdhInternal?.length), Array(data.sdhInternal?.length)];
+      let inx = 0;
+      data.sdhInternal?.forEach(plot => {
+        data1[0][inx] = plot.sensingDt ;
+        data1[1][inx] = plot.temp;
+        inx++;
+      });
+      inx = 0;
+      data.sdhExternal?.forEach(plot => {
+        data1[2][inx] = plot.temp;
+        inx++;
+      });
+      this.graphData = [
+        { x: data1[0], y: data1[1], type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
+        { x: data1[0], y: data1[2], type: 'scatter', mode: 'lines+points', marker: {color: 'blue'} },
+      ];
+    });
